@@ -117,10 +117,10 @@ public class User implements Serializable{
         
         Database database = new Database();
         database.connect();
-        PreparedStatement insertCommentQuery = database.connection.prepareStatement("INSERT INTO COMMENT (AUTHOR,IMAGEID,COMMENT_CONTENT,PROCESSING_PARAMETERS)" + "VALUES(?,?,?,?)");
-        insertCommentQuery.setInt(1, this.id);
+        PreparedStatement insertCommentQuery = database.connection.prepareStatement("INSERT INTO COMMENT (email,passport,nickname,gender,firstname,lastname,country,zipCode,streetName,streetNumber)" + "VALUES(?,?,?,?,?,?,?,?,?,?)");
         insertCommentQuery.setString(2, this.email);
-        insertCommentQuery.setString(3, this.nickname);
+        insertCommentQuery.setString(3, this.password);
+        insertCommentQuery.setString(4, this.nickname);
         insertCommentQuery.setString(5, this.gender);
         insertCommentQuery.setString(6, this.firstName);
         insertCommentQuery.setString(7, this.lastName);
@@ -128,6 +128,8 @@ public class User implements Serializable{
         insertCommentQuery.setString(9, this.zipCode);
         insertCommentQuery.setString(10, this.streetName);
         insertCommentQuery.setString(11, this.streetNumber);
+        
+        
         
         database.insert(insertCommentQuery);
         database.disconnect();
