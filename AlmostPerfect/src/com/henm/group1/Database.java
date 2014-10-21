@@ -9,16 +9,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-public class Database {
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
  * Stores the database credentials and provides query execution methods.
  * 
  */
-public class MySQLDatabase{
+public class Database{
 	
 	private Connection connection = null;
 	private boolean isConnected = false;
@@ -33,20 +32,14 @@ public class MySQLDatabase{
 	/**
 	 * 
 	 * Constructor for a database instance.
-	 * 
-	 * @param username
-	 * @param password
-	 * @param database
-	 * @param host
-	 * @param port
-	 * 
+
 	 */
-	public MySQLDatabase(String username, String password, String database, String host, int port){
-		this.username = username;
-		this.password = password;
-		this.host = host;
-		this.port = port;
-		this.database = database;
+	public Database(){
+            try {
+                this.connect();
+            } catch (Exception ex) {
+                //TODO
+            }
 	}
 	
 	
@@ -140,6 +133,4 @@ public class MySQLDatabase{
 		statement.executeUpdate();
 	}
 	
-}
-
 }
