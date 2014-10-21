@@ -5,14 +5,13 @@ package henm.group1;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 
-@ManagedBean
 @Named(value = "User")
 @SessionScoped
 
 public class User implements Serializable{
+    
     private int id;
     private String email;
     private String password;
@@ -111,6 +110,10 @@ public class User implements Serializable{
 
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
+    }
+    
+    public void registerNewUser(){
+        Database database = new Database();
     }
 
 }
