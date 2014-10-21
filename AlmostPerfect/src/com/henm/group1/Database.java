@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * 
@@ -19,14 +17,14 @@ import java.util.logging.Logger;
  */
 public class Database{
 	
-	private Connection connection = null;
+	public Connection connection = null;
 	private boolean isConnected = false;
 	
-	private String username = "henmUser";
-	private String password = "FEQvWhd5LpE4JmUP";
-	private String database = "henm_database";
-	private String host = "delange.diskstation.me";
-	private int port = 3306;
+	private final String username = "henmUser";
+	private final String password = "FEQvWhd5LpE4JmUP";
+	private final String database = "henm_database";
+	private final String host = "delange.diskstation.me";
+	private final int port = 3306;
 	
 	
 	/**

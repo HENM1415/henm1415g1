@@ -4,6 +4,7 @@
 package henm.group1;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -112,8 +113,26 @@ public class User implements Serializable{
         this.streetNumber = streetNumber;
     }
     
-    public void registerNewUser(){
+    public void registerNewUser() throws Exception{
+        
         Database database = new Database();
+        database.connect();
+        PreparedStatement insertCommentQuery = database.connection.prepareStatement("INSERT INTO COMMENT (AUTHOR,IMAGEID,COMMENT_CONTENT,PROCESSING_PARAMETERS)" + "VALUES(?,?,?,?)");
+        insertCommentQuery.setInt(1, this.id);
+        insertCommentQuery.setString(2, this.email);
+        insertCommentQuery.setString(3, this.nickname);
+        insertCommentQuery.setString(5, this.gender);
+        insertCommentQuery.setString(6, this.firstName);
+        insertCommentQuery.setString(7, this.lastName);
+        insertCommentQuery.setString(8, this.country);
+        insertCommentQuery.setString(9, this.zipCode);
+        insertCommentQuery.setString(10, this.streetName);
+        insertCommentQuery.setString(11, this.streetNumber);
+        
+        database.insert(insertCommentQuery);
+        database.disconnect();
+        
+                
     }
 
 }
