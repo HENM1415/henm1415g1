@@ -65,6 +65,11 @@ html {
   top:0;
 }
 
+#content img{
+    position:absolute;
+    right:40px;
+    top:40px;
+}
 
 
 #logo{
