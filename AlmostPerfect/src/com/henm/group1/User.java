@@ -128,9 +128,7 @@ public class User implements Serializable{
         insertCommentQuery.setString(9, this.zipCode);
         insertCommentQuery.setString(10, this.streetName);
         insertCommentQuery.setString(11, this.streetNumber);
-        
-        
-        
+                
         database.insert(insertCommentQuery);
         database.disconnect();
         

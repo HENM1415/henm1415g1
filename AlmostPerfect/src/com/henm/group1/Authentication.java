@@ -5,8 +5,13 @@
  */
 package henm.group1;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.servlet.ServletException;
@@ -20,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Authentication extends HttpServlet {
 
+    private String username;
+    private String password;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,14 +38,36 @@ public class Authentication extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/plain");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        username = request.getParameter("username");
+        password = request.getParameter("password");
         try (PrintWriter out = response.getWriter()) {
             // TODO: Ask the database and return an id if login successful.
             JsonObject jsonObj = Json.createObjectBuilder()
                     .add("success", "true").build();
             out.println(jsonObj.toString());
+            
+            
         }
+    }
+    
+    protected int authenticate(String username,String password)
+    {
+        try {
+            Database d = new Database();
+            d.connect();
+            PreparedStatement p = d.connection.prepareStatement("select id from USER where nickname = ? and password = ?");
+            p.setString(1, username);
+            p.setString(2, password);
+            ResultSet result = d.query(p);
+            if(result.next())
+            {
+                return result.getInt(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Authentication.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,5 +108,33 @@ public class Authentication extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }
