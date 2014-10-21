@@ -203,3 +203,17 @@ html {
   top:0;
   padding:0;
 }
+
+#content input{
+    margin: 5px;
+}
+
+#content ul{
+    list-style-type: none;
+}
+
+#content li{
+    font-size: larger;
+    font-weight: 600;
+    margin-top: 15px;
+}
