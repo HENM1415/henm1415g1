@@ -2,8 +2,12 @@
  * Profile.java
  */
 package henm.group1;
+
+import java.sql.PreparedStatement;
+
 public class Profile {
     private int id;
+    private String age;
     private String imageUrl;
     private String maritalStatus;
     private String hairColor;
@@ -15,7 +19,9 @@ public class Profile {
     private String religion;
     private String hobbies;
     private String additionalInfo;
-    private String age;
+    private Double lng;
+    private Double lat;
+    
 
     public String getAge() {
         return age;
@@ -121,4 +127,45 @@ public class Profile {
         this.additionalInfo = additionalInfo;
     }
 
+     public void registerProfile() throws Exception{
+        
+        Database database = new Database();
+        database.connect();
+        PreparedStatement insertCommentQuery = database.connection.prepareStatement("INSERT INTO COMMENT (id,"
+                + "                                                                                       age,"
+                + "                                                                                       imageUrl,"
+                + "                                                                                       maritalStatus,"
+                + "                                                                                       hairColor,"
+                + "                                                                                       eyeColor,"
+                + "                                                                                       height,"
+                + "                                                                                       weight,"
+                + "                                                                                       profession,"
+                + "                                                                                       nationality,"
+                + "                                                                                       religion,"
+                + "                                                                                       hobbies,"
+                + "                                                                                       additionalInfo,"
+                + "                                                                                       lng,"
+                + "                                                                                       lat;)" +
+                "VALUES(?,?,?,?,?,?,?,?,?,?,,?,?,?,?,?)");
+        insertCommentQuery.setInt(1, this.id);
+        insertCommentQuery.setString(2, this.age);
+        insertCommentQuery.setString(3, this.imageUrl);
+        insertCommentQuery.setString(4, this.maritalStatus);
+        insertCommentQuery.setString(5, this.hairColor);
+        insertCommentQuery.setString(6, this.eyeColor);
+        insertCommentQuery.setString(7, this.height);
+        insertCommentQuery.setString(8, this.weight);
+        insertCommentQuery.setString(9, this.profession);
+        insertCommentQuery.setString(10, this.nationality);
+        insertCommentQuery.setString(11, this.religion);
+        insertCommentQuery.setString(12, this.hobbies);
+        insertCommentQuery.setString(13, this.additionalInfo);
+        insertCommentQuery.setDouble(14, this.lng);
+        insertCommentQuery.setDouble(15, this.lat);
+        
+        database.insert(insertCommentQuery);
+        database.disconnect();
+        
+                
+    }
 }
