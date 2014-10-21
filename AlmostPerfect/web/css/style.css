@@ -97,6 +97,27 @@ html {
   margin-left:50px;
 }
 
+#loginPanel{
+  color:#ffffff;
+  width:300px;
+  
+  position:fixed;
+  top:50px;
+  right:50px;
+  background:#ff4489;
+  padding:15px;
+  display:none;
+
+}
+
+  #loginPanel input {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 3px;
+  }
+
 #header a {
   color: #ffffff;
   font-weight: 600;
@@ -168,4 +189,17 @@ html {
 #content{
   padding: 40px;
   margin-left:250px;
+}
+
+.verticalSpacer{
+  height:15px;
+}
+
+#loginPanelCloseButton{
+  width:25px!important;
+  height:25px!important;
+  position:absolute;
+  right:0;
+  top:0;
+  padding:0;
 }
