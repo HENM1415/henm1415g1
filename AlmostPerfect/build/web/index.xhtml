@@ -1,12 +1,50 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+﻿<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
-</html>
+<h:head>
+  <title>Almost-Perfect</title>
+  <link rel="stylesheet" href="./CSS/style.css" />
+</h:head>
+<h:body>
+  <div id="header">
+    <div id="headerLogo">
+      <img src="./img/almostPerfect2.svg" alt="" />
+    </div>
+    <div id="search">
+      <input type="text" value="" placeholder="John Doe"/>
+      <input id="headerSearchButton" type="button" value=" "  />
 
+    </div>
+    <div id="headerLinks">
+      <a href="">0 New Messages</a>
+      <a href="">0 Matches</a>
+      <a href="">Settings</a>
+    </div>
+    <div id="login">
+      <a class="userTitle" href="">SexyGod1996</a>
+      <input type="button" value="Logout"  />
+    </div>
+    
+  </div>
+  <div id="main">
+    <div id="leftPane">
+      <div id="logo">
+        <!--<img src="./img/logo.svg" alt="" />
+        --><img src="./img/almostPerfect1.svg" alt="" />
+      </div>
+      <div id="leftButtonList">
+        <input type="button" value="Find people near you" />
+        <input type="button" value="Random Chat" />
+        <input type="button" value="Random Pictures" />
+        <input type="button" value="Rate People" />
+      </div>
+    </div>
+    <div id="content">
+      <h1>Love!</h1>
+      Putin loves you!<br />
+      <img src="http://euromaidanpress.com/wp-content/uploads/2014/07/meet-the-pr-firm-that-helped-vladimir-putin-troll-the-entire-country.jpg?iact=rc&uact=3&dur=905&page=2&start=11&ndsp=21&ved=0CDsQMygMMAw#ActualImage" alt="" width="500px"/>
+    </div>
+  </div>
+</h:body>
+</html>
